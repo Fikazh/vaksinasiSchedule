@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "722611278737",
+    "firebase_url": "https://vaksinasischedule-default-rtdb.firebaseio.com",
+    "project_id": "vaksinasischedule",
+    "storage_bucket": "vaksinasischedule.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722611278737:android:b9fff1c29d4d39fbb40030",
+        "android_client_info": {
+          "package_name": "com.example.vaksinasischadule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722611278737-ujhkkpa3j837ei17u1gi37tke78n85k6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKlkWzXJta8fhPuJ6z0hA_YkimnzPRE8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722611278737-ujhkkpa3j837ei17u1gi37tke78n85k6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722611278737:android:835d175e5dfaf359b40030",
+        "android_client_info": {
+          "package_name": "com.example.vaksinasishedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722611278737-ujhkkpa3j837ei17u1gi37tke78n85k6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKlkWzXJta8fhPuJ6z0hA_YkimnzPRE8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722611278737-ujhkkpa3j837ei17u1gi37tke78n85k6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
