@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C4DFE6"
+    tools:context=".Pengaturan">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:background="@drawable/box_biru"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_banner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Pengaturan"
+            android:textColor="#ffffff"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/tentang_kami_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tentang Kami"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:gravity="left"
+        android:drawableEnd="@drawable/ic_arrow_forward"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/banner" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/white"
+        android:layout_marginHorizontal="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tentang_kami_button" />
+
+    <Button
+        android:id="@+id/ulas_kami_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ulas Kami"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:gravity="left"
+        android:drawableEnd="@drawable/ic_arrow_forward"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/white"
+        android:layout_marginHorizontal="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ulas_kami_button" />
+
+    <Button
+        android:id="@+id/ajukan_pertanyaan_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ajukan Pertanyaan"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:gravity="left"
+        android:drawableEnd="@drawable/ic_arrow_forward"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/line2" />
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/white"
+        android:layout_marginHorizontal="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ajukan_pertanyaan_button" />
+
+    <Button
+        android:id="@+id/keluar_akun_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Keluar Akun"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:gravity="left"
+        android:drawableEnd="@drawable/ic_arrow_forward"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/line3" />
+
+    <View
+        android:id="@+id/line4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/white"
+        android:layout_marginHorizontal="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keluar_akun_button" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#375397"
+        app:itemIconTint="#c4dfe6"
+        app:itemTextColor="#c4dfe6"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

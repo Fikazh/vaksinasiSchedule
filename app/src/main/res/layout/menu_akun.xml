@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#375E97">
+
+    <ImageView
+        android:id="@+id/foto_profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="282dp"
+        android:layout_marginBottom="606dp"
+        android:contentDescription="@string/hello_world"
+        android:padding="1dp"
+        android:src="@drawable/ellipse1_round"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nama_profile"
+        android:layout_width="211dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="639dp"
+        android:background="@drawable/kotakbiru_radius10"
+        android:contentDescription="@string/hello_world"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/foto_profile"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/layout_kotakbiru"
+        android:layout_width="408dp"
+        android:layout_height="498dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="83dp"
+        android:background="@drawable/layout_kotakbiru_profile"
+        android:contentDescription="@string/hello_world"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foto_profile" />
+
+    <TextView
+        android:id="@+id/email_profile"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="344dp"
+        android:layout_marginBottom="456dp"
+        android:fontFamily="@font/roboto"
+        android:text="Email:"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:contentDescription="@string/hello_world"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_kotakbiru"
+        app:layout_constraintEnd_toEndOf="@+id/layout_kotakbiru"
+        app:layout_constraintStart_toStartOf="@+id/layout_kotakbiru"
+        app:layout_constraintTop_toTopOf="@+id/layout_kotakbiru" />
+
+    <TextView
+        android:id="@+id/BoxEmailProfile"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="416dp"
+        android:background="@drawable/kotakputih_radius10"
+        android:contentDescription="@string/hello_world"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_kotakbiru"
+        app:layout_constraintEnd_toEndOf="@+id/layout_kotakbiru"
+        app:layout_constraintStart_toStartOf="@+id/layout_kotakbiru"
+        app:layout_constraintTop_toTopOf="@+id/layout_kotakbiru" />
+
+    <TextView
+        android:id="@+id/KataSandiProfile"
+        android:layout_width="110dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="284dp"
+        android:layout_marginBottom="372dp"
+        android:fontFamily="@font/roboto"
+        android:text="Kata Sandi:"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:contentDescription="@string/hello_world"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_kotakbiru"
+        app:layout_constraintEnd_toEndOf="@+id/layout_kotakbiru"
+        app:layout_constraintStart_toStartOf="@+id/layout_kotakbiru"
+        app:layout_constraintTop_toTopOf="@+id/layout_kotakbiru" />
+
+    <TextView
+        android:id="@+id/BoxKataSandiProfile"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="322dp"
+        android:background="@drawable/kotakputih_radius10"
+        android:contentDescription="@string/hello_world"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_kotakbiru"
+        app:layout_constraintEnd_toEndOf="@+id/layout_kotakbiru"
+        app:layout_constraintStart_toStartOf="@+id/layout_kotakbiru"
+        app:layout_constraintTop_toTopOf="@+id/layout_kotakbiru" />
+
+    <TextView
+        android:id="@+id/NoTeleponProfile"
+        android:layout_width="146dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="203dp"
+        android:layout_marginEnd="248dp"
+        android:layout_marginBottom="265dp"
+        android:contentDescription="@string/hello_world"
+        android:fontFamily="@font/roboto"
+        android:text="Nomor Telepon:"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_kotakbiru"
+        app:layout_constraintEnd_toEndOf="@+id/layout_kotakbiru"
+        app:layout_constraintStart_toStartOf="@+id/layout_kotakbiru"
+        app:layout_constraintTop_toTopOf="@+id/layout_kotakbiru" />
+
+    <TextView
+        android:id="@+id/BoxNoTeleponProfile"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="244dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="213dp"
+        android:background="@drawable/kotakputih_radius10"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_kotakbiru"
+        app:layout_constraintEnd_toEndOf="@+id/layout_kotakbiru"
+        app:layout_constraintStart_toStartOf="@+id/layout_kotakbiru"
+        app:layout_constraintTop_toTopOf="@+id/layout_kotakbiru" />
+
+    <TextView
+        android:id="@+id/AlamatProfile"
+        android:layout_width="70dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="306dp"
+        android:layout_marginEnd="324dp"
+        android:layout_marginBottom="163dp"
+        android:fontFamily="@font/roboto"
+        android:text="Alamat:"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_kotakbiru"
+        app:layout_constraintEnd_toEndOf="@+id/layout_kotakbiru"
+        app:layout_constraintStart_toStartOf="@+id/layout_kotakbiru"
+        app:layout_constraintTop_toTopOf="@+id/layout_kotakbiru" />
+
+    <TextView
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="344dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="104dp"
+        android:background="@drawable/kotakputih_radius10"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_kotakbiru"
+        app:layout_constraintEnd_toEndOf="@+id/layout_kotakbiru"
+        app:layout_constraintStart_toStartOf="@+id/layout_kotakbiru"
+        app:layout_constraintTop_toTopOf="@+id/layout_kotakbiru" />
+
+    <Button
+        android:id="@+id/GantiSandi"
+        android:layout_width="359dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="413dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="23dp"
+        android:backgroundTint="#C4DFE6"
+        android:text="Ganti Sandi"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_kotakbiru"
+        app:layout_constraintEnd_toEndOf="@+id/layout_kotakbiru"
+        app:layout_constraintStart_toStartOf="@+id/layout_kotakbiru"
+        app:layout_constraintTop_toTopOf="@+id/layout_kotakbiru" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
