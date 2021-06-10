@@ -96,6 +96,7 @@
             tools:layout_editor_absoluteX="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
@@ -131,6 +132,7 @@
             tools:layout_editor_absoluteX="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
