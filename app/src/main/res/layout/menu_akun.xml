@@ -41,13 +41,11 @@
 
     <TextView
         android:id="@+id/layout_kotakbiru"
-        android:layout_width="408dp"
-        android:layout_height="498dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="83dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:background="@drawable/layout_kotakbiru_profile"
         android:contentDescription="@string/hello_world"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foto_profile" />
@@ -168,6 +166,7 @@
         app:layout_constraintTop_toTopOf="@+id/layout_kotakbiru" />
 
     <TextView
+        android:id="@+id/AlamatProfile_field"
         android:layout_width="340dp"
         android:layout_height="50dp"
         android:layout_marginStart="14dp"
@@ -182,21 +181,26 @@
 
     <Button
         android:id="@+id/GantiSandi"
-        android:layout_width="359dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="413dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="23dp"
-        android:backgroundTint="#C4DFE6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:drawableEnd="@drawable/ic_arrow_forward"
+        android:gravity="left"
         android:text="Ganti Sandi"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/layout_kotakbiru"
-        app:layout_constraintEnd_toEndOf="@+id/layout_kotakbiru"
-        app:layout_constraintStart_toStartOf="@+id/layout_kotakbiru"
-        app:layout_constraintTop_toTopOf="@+id/layout_kotakbiru" />
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/AlamatProfile_field" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#375397"
+        app:itemIconTint="#c4dfe6"
+        app:itemTextColor="#c4dfe6"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
