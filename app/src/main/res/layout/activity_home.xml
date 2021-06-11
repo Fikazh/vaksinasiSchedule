@@ -123,7 +123,7 @@
                 android:background="@drawable/layout_rounded_bg_white"
                 android:padding="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lengkapi_data">
+                app:layout_constraintTop_toBottomOf="@id/KotakUpdate">
 
                 <TextView
                     android:id="@+id/tips_kesehatan_label"
@@ -146,10 +146,11 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/KotakUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/layout_rounded_bg_white"
-                app:layout_constraintTop_toBottomOf="@id/tips_kesehatan"
+                app:layout_constraintTop_toBottomOf="@id/lengkapi_data"
                 android:layout_marginTop="15dp"
                 android:padding="20dp"
                 app:layout_constraintStart_toStartOf="parent">
