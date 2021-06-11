@@ -55,6 +55,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/botol_vaksin" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
@@ -143,6 +144,78 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tips_kesehatan_label" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_rounded_bg_white"
+                app:layout_constraintTop_toBottomOf="@id/tips_kesehatan"
+                android:layout_marginTop="15dp"
+                android:padding="20dp"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/UpdateCOVID19"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UPDATE COVID-19 DI INDONESIA"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/UpdateTanggalCovid19"
+                    app:layout_constraintTop_toBottomOf="@id/UpdateCOVID19"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Per Jumat, 11 Juni 2021"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/konfirmasicovid19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/updatecovid19"
+                    android:layout_marginTop="15dp"
+                    android:text="TERKONFIRMASI: 1.894.025"
+                    android:textSize="18sp"
+                    android:gravity="center_vertical|center_horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/UpdateTanggalCovid19"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/meninggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/updatecovid19_abu"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="MENINGGAL: 52.566"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/Sembuh"
+                    android:layout_marginTop="20dp"
+                   />
+
+                <TextView
+                    android:id="@+id/Sembuh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SEMBUH: 1.735.144"
+                    android:textColor="@color/white"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="18sp"
+                    android:background="@drawable/bgsembuh"
+                    app:layout_constraintTop_toBottomOf="@id/konfirmasicovid19"
+                    android:layout_marginTop="20dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
