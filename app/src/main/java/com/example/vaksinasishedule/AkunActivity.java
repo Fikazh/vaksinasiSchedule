@@ -21,7 +21,7 @@ public class AkunActivity extends AppCompatActivity {
         ganti_sandi = findViewById(R.id.GantiSandi);
         ganti_sandi.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                BottomSheetDialog ganti_sandi_panel = new BottomSheetDialog(Pengaturan.this);
+                BottomSheetDialog ganti_sandi_panel = new BottomSheetDialog(AkunActivity.this);
                 ganti_sandi_panel.setContentView(R.layout.pengaturan_tentang_kami);
                 ganti_sandi_panel.show();
             }
