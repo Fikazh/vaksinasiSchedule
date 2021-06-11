@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -63,10 +63,10 @@
         android:layout_marginTop="63dp"
         android:layout_marginBottom="57dp"
         android:background="#CCC4DFE6"
-        app:layout_constraintTop_toBottomOf="@id/constraint_banner"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navbar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navbar">
+        app:layout_constraintTop_toBottomOf="@id/constraint_banner">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -79,50 +79,50 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/layout_rounded_bg_white"
                 android:padding="10dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/teks_ajakan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="18dp"
+                    android:background="@drawable/lengkapi_data_bg"
                     android:gravity="center_vertical|center_horizontal"
+                    android:padding="18dp"
                     android:text="Ayo lengkapi data\nuntuk mendaftar sebagai\npenerima vaksinasi"
                     android:textColor="#fff"
-                    android:background="@drawable/lengkapi_data_bg"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/toa_ayodaftar"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Daftar Sekarang"
+                    android:layout_marginTop="10dp"
                     android:backgroundTint="#375E97"
                     android:paddingHorizontal="30dp"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toBottomOf="@id/teks_ajakan"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Daftar Sekarang"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/teks_ajakan" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/tips_kesehatan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/layout_rounded_bg_white"
                 android:padding="10dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintTop_toBottomOf="@id/lengkapi_data"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lengkapi_data">
 
                 <TextView
                     android:id="@+id/tips_kesehatan_label"
@@ -130,8 +130,8 @@
                     android:layout_height="wrap_content"
                     android:text="Tips Kesehatan"
                     android:textColor="#000"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/jaga_kesehatan"
@@ -157,10 +157,10 @@
             android:id="@+id/tangan"
             android:layout_width="63dp"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:scaleX="-1"
             android:src="@drawable/tangan_logo"
-            android:scaleX="-1"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_banner"
@@ -170,9 +170,9 @@
             android:text="JaVaC"
             android:textColor="#ffffff"
             android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/tangan"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

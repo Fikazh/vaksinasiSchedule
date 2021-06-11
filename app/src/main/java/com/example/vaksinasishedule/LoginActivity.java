@@ -16,13 +16,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 
-public class LoginActivity extends AppCompatActivity{
+public class LoginActivity extends AppCompatActivity {
 
-    User usr;
-    EditText txtNama, txtPassword;
-    Button btnLogin;
+    EditText txtEmail, txtPassword;
+    Button btnLogin, btnRegister;
     ProgressBar progressBar;
     FirebaseAuth mAuth;
 
@@ -32,11 +30,11 @@ public class LoginActivity extends AppCompatActivity{
         getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
 
-        txtNama = findViewById(R.id.usernameField);
-        txtPassword = findViewById(R.id.passwordField);
+        txtEmail = findViewById(R.id.emailLoginField);
+        txtPassword = findViewById(R.id.passwordLoginField);
         btnLogin = findViewById(R.id.masukButton);
-//        progressBar = findViewById(R.id.progressBar);
-        usr = new User();
+        btnRegister = findViewById(R.id.registerButton);
+        progressBar = findViewById(R.id.progressBar2);
         mAuth = FirebaseAuth.getInstance();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -45,36 +43,46 @@ public class LoginActivity extends AppCompatActivity{
                 userLogin();
             }
         });
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            }
+        });
     }
 
-    private void userLogin(){
-        String username = txtNama.getText().toString().trim();
+    private void userLogin() {
+        String email = txtEmail.getText().toString().trim();
         String password = txtPassword.getText().toString().trim();
 
-        if (username.isEmpty()){
-            txtNama.setError("Username Salah");
-            txtNama.requestFocus();
+        if (email.isEmpty()) {
+            txtEmail.setError("Email tidak boleh kosong");
+            txtEmail.requestFocus();
+            return;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            txtEmail.setError("Email tidak valid");
+            txtEmail.requestFocus();
             return;
         }
-        if (username.isEmpty()){
-            txtNama.setError("Password Salah");
-            txtNama.requestFocus();
+        if (password.isEmpty()) {
+            txtPassword.setError("Password tidak boleh kosong");
+            txtPassword.requestFocus();
             return;
+        } else {
+            progressBar.setVisibility(View.VISIBLE);
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Login Gagal\nEmail atau Password salah\nSilahkan coba lagi", Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.INVISIBLE);
+                            }
+                        }
+                    });
         }
-//        progressBar.setVisibility(View.VISIBLE);
-        mAuth.signInWithEmailAndPassword(username, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            //ets
-                            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(), "Login Gagal", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
     }
-
 }
