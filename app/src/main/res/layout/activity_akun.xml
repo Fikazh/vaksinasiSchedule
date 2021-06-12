@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#375E97">
+    android:background="#375E97"
+    tools:context=".AkunActivity">
 
     <ImageView
         android:id="@+id/foto_profile"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="@string/hello_world"
         android:padding="1dp"
         android:src="@drawable/ellipse1_round"
         android:visibility="visible"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/nama_profile"
+        android:id="@+id/namaAkunField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/kotakbiru_radius10"
-        android:text="Sendi Gambut"
-        android:textColor="@color/black"
-        android:padding="10dp"
         android:layout_marginHorizontal="10dp"
-        app:layout_constraintStart_toEndOf="@+id/foto_profile"
+        android:background="@drawable/kotakbiru_radius10"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/akun_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/akun_content"/>
+        app:layout_constraintStart_toEndOf="@+id/foto_profile"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/akun_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/layout_kotakbiru_profile"
         android:layout_marginTop="20dp"
+        android:background="@drawable/layout_kotakbiru_profile"
         android:padding="20dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navbar"
         app:layout_constraintTop_toBottomOf="@id/foto_profile"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navbar">
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
 
         <TextView
             android:id="@+id/email_profile"
@@ -54,103 +55,110 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/BoxEmailProfile"
+            android:id="@+id/emailAkunField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FathokTheSnek@Yahee.com"
-            android:textColor="@color/black"
             android:background="@drawable/kotakputih_radius10"
             android:padding="10dp"
-            app:layout_constraintTop_toBottomOf="@id/email_profile"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email_profile" />
 
         <TextView
             android:id="@+id/NoKTPProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto"
             android:text="Nomor KTP:"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/BoxEmailProfile"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailAkunField" />
 
         <TextView
-            android:id="@+id/BoxNoKTPProfile"
+            android:id="@+id/ktpAkunField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="42069691337420"
-            android:textColor="@color/black"
-            android:padding="10dp"
             android:background="@drawable/kotakputih_radius10"
             android:contentDescription="@string/hello_world"
-            app:layout_constraintTop_toBottomOf="@id/NoKTPProfile"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:padding="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/NoKTPProfile" />
 
         <TextView
             android:id="@+id/NoTeleponProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:contentDescription="@string/hello_world"
             android:fontFamily="@font/roboto"
             android:text="Nomor Telepon:"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/BoxNoKTPProfile"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ktpAkunField" />
 
         <TextView
-            android:id="@+id/BoxNoTeleponProfile"
+            android:id="@+id/telponAkunField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="087813374269"
-            android:textColor="@color/black"
-            android:padding="10dp"
             android:background="@drawable/kotakputih_radius10"
-            app:layout_constraintTop_toBottomOf="@id/NoTeleponProfile"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:padding="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/NoTeleponProfile" />
 
         <TextView
             android:id="@+id/AlamatProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto"
             android:text="Alamat:"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/BoxNoTeleponProfile"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/telponAkunField" />
 
         <TextView
-            android:id="@+id/AlamatProfile_field"
+            android:id="@+id/alamatAkunField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Jl. Gg. Buntu, Kelurahan Pecel Lele"
-            android:textColor="@color/black"
             android:background="@drawable/kotakputih_radius10"
             android:padding="10dp"
-            app:layout_constraintTop_toBottomOf="@id/AlamatProfile"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/AlamatProfile" />
 
         <Button
             android:id="@+id/GantiSandi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:background="@android:color/transparent"
             android:drawableEnd="@drawable/ic_arrow_forward"
             android:gravity="left"
             android:text="Ganti Sandi"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:layout_marginTop="15dp"
-            app:layout_constraintTop_toBottomOf="@id/AlamatProfile_field"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/alamatAkunField" />
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -164,5 +172,6 @@
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/nav_menu" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
