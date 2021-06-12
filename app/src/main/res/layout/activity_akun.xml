@@ -7,8 +7,8 @@
     android:background="#375E97"
     tools:context=".AkunActivity">
 
-    <ImageView
-        android:id="@+id/foto_profile"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotoProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
@@ -30,7 +30,7 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@id/akun_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/foto_profile"
+        app:layout_constraintStart_toEndOf="@+id/fotoProfile"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +41,7 @@
         android:background="@drawable/layout_kotakbiru_profile"
         android:padding="20dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_navbar"
-        app:layout_constraintTop_toBottomOf="@id/foto_profile"
+        app:layout_constraintTop_toBottomOf="@id/fotoProfile"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="-26dp">
 
