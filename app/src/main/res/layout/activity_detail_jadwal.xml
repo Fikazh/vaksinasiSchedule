@@ -170,6 +170,15 @@
         android:background="@drawable/box_biru"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/image_banner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_jadwal_banner"/>
+
         <TextView
             android:id="@+id/text_banner"
             android:layout_width="wrap_content"
@@ -178,8 +187,8 @@
             android:text="Jadwal Vaksin"
             android:textColor="#ffffff"
             android:textSize="36sp"
-            android:layout_marginLeft="20dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="15dp"
+            app:layout_constraintStart_toEndOf="@id/image_banner"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
@@ -190,8 +199,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#375397"
-        app:itemIconTint="#c4dfe6"
-        app:itemTextColor="#c4dfe6"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/nav_menu" />

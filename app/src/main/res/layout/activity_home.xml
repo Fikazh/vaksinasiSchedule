@@ -255,8 +255,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#375397"
-        app:itemIconTint="#c4dfe6"
-        app:itemTextColor="#c4dfe6"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/nav_menu" />
