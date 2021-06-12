@@ -11,12 +11,11 @@ import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class PengaturanActivity extends AppCompatActivity {
 
-    Button tentang_kami;
-    Button ulas_kami;
-    Button pertanyaan;
+    Button tentang_kami, ulas_kami, pertanyaan, btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +24,10 @@ public class PengaturanActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         tentang_kami = findViewById(R.id.tentang_kami_button);
+        pertanyaan = findViewById(R.id.ajukan_pertanyaan_button);
+        ulas_kami = findViewById(R.id.ulas_kami_button);
+        btnLogout = findViewById(R.id.logoutButton);
+
         tentang_kami.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 BottomSheetDialog tentang_kami_teks = new BottomSheetDialog(PengaturanActivity.this);
@@ -33,7 +36,6 @@ public class PengaturanActivity extends AppCompatActivity {
             }
         });
 
-        ulas_kami = findViewById(R.id.ulas_kami_button);
         ulas_kami.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 BottomSheetDialog ulas_kami_teks = new BottomSheetDialog(PengaturanActivity.this);
@@ -42,12 +44,19 @@ public class PengaturanActivity extends AppCompatActivity {
             }
         });
 
-        pertanyaan = findViewById(R.id.ajukan_pertanyaan_button);
         pertanyaan.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 BottomSheetDialog pertanyaan_teks = new BottomSheetDialog(PengaturanActivity.this);
                 pertanyaan_teks.setContentView(R.layout.pengaturan_ajukan_pertanyaan);
                 pertanyaan_teks.show();
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(PengaturanActivity.this, LoginActivity.class));
             }
         });
 

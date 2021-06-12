@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VaksinasiShedule">
-        <activity android:name=".PengaturanActivity"></activity>
+        <activity android:name=".AkunActivity"></activity>
+        <activity android:name=".PengaturanActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".AkunActivity" />
         <activity android:name=".Jadwal" />
         <activity android:name=".DetailJadwalActivity" />
         <activity android:name=".RegisterActivity" />
