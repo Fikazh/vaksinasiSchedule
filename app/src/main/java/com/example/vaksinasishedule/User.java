@@ -1,7 +1,7 @@
 package com.example.vaksinasishedule;
 
 public class User {
-    public String nama, password, email, nomorTelpon;
+    public String nama, email, nomorTelpon;
 
     public User() {
     }
@@ -12,14 +12,6 @@ public class User {
 
     public void setNama(String nama) {
         this.nama = nama;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
