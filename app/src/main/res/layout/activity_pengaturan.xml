@@ -32,16 +32,9 @@
             android:text="Pengaturan"
             android:textColor="#ffffff"
             android:textSize="36sp"
-<<<<<<< HEAD
-            android:layout_marginStart="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/image_banner"
             app:layout_constraintTop_toTopOf="parent" />
-=======
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
->>>>>>> d7df84ec088149e2c859233359ca0deb46029f25
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
