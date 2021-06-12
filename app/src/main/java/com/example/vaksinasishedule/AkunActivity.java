@@ -12,8 +12,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -50,6 +54,8 @@ public class AkunActivity extends AppCompatActivity {
                 BottomSheetDialog ganti_sandi_panel = new BottomSheetDialog(AkunActivity.this);
                 ganti_sandi_panel.setContentView(R.layout.akun_ganti_password);
                 ganti_sandi_panel.show();
+                TempatGantiPassword(ganti_sandi_panel);
+
             }
         });
 
@@ -98,6 +104,76 @@ public class AkunActivity extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+    }
+
+    private void TempatGantiPassword(BottomSheetDialog bsd){
+        TextView txtPasswordLama = bsd.findViewById(R.id.passwordLamaField);
+        TextView txtPasswordBaru = bsd.findViewById(R.id.passwordBaruField);
+        TextView txtPasswordUlangBaru = bsd.findViewById(R.id.passwordUlangBaruField);
+        Button btnconfirm = bsd.findViewById(R.id.confirmButton);
+
+        btnconfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(user!=null){
+                    if(txtPasswordLama.getText().toString().trim().isEmpty()){
+                        txtPasswordLama.setError("Password tidak boleh kosong");
+                        txtPasswordLama.requestFocus();
+                        return;
+                    }
+                    if(txtPasswordBaru.getText().toString().trim().isEmpty()){
+                        txtPasswordBaru.setError("Password tidak boleh kosong");
+                        txtPasswordBaru.requestFocus();
+                        return;
+                    }
+                    else if(txtPasswordBaru.getText().toString().trim().length() < 6){
+                        txtPasswordBaru.setError("Password tidak boleh kurang dari 6 karakter");
+                        txtPasswordBaru.requestFocus();
+                        return;
+                    }
+                    if(txtPasswordUlangBaru.getText().toString().trim().isEmpty()){
+                        txtPasswordUlangBaru.setError("Password tidak boleh kosong");
+                        txtPasswordUlangBaru.requestFocus();
+                        return;
+                    }
+                    else if(!txtPasswordUlangBaru.getText().toString().trim().matches(txtPasswordBaru.getText().toString().trim())){
+                        txtPasswordUlangBaru.setError("Password tidak sama");
+                        txtPasswordUlangBaru.requestFocus();
+                        return;
+                    }
+                    else{
+//                        ProgressBar progressBar = findViewById(R.id.progressBar3);
+//                        progressBar.setVisibility(View.VISIBLE);
+                        GantiPassword(txtPasswordLama.getText().toString().trim(),txtPasswordBaru.getText().toString().trim());
+                        bsd.hide();
+
+                    }
+                }
+            }
+        });
+    }
+
+    private void GantiPassword(String passwordLama, String passwordBaru){
+        ProgressBar progressBar = findViewById(R.id.progressBar3);
+        progressBar.setVisibility(View.VISIBLE);
+        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(), passwordLama);
+        user.reauthenticate(authCredential).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                user.updatePassword(passwordBaru).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getApplicationContext(), "Password berhasil diganti",Toast.LENGTH_LONG).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(), "Password gagal diganti", Toast.LENGTH_LONG).show();
+                    }
+                });
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
     }
