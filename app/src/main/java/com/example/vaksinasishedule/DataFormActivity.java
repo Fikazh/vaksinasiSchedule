@@ -1,6 +1,5 @@
 package com.example.vaksinasishedule;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +20,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -35,6 +37,7 @@ public class DataFormActivity extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageReff;
     private String userID, namaFile;
+    private TextView txtKTP, txtKK, txtPenyakit;
     private Uri img;
     private ImageView picKK, picKTP, picSuratSehat;
 
@@ -82,47 +85,92 @@ public class DataFormActivity extends AppCompatActivity {
         });
 
         Button btnKirim = findViewById(R.id.kirim_button);
-        TextView txtRiwayatPenyakit = findViewById(R.id.riwayatPenyakitField);
+        txtKTP = findViewById(R.id.ktpFormField);
+        txtKK = findViewById(R.id.kkFormfield);
+        txtPenyakit = findViewById(R.id.riwayatPenyakitField);
         mAuth = FirebaseAuth.getInstance();
-        reff = FirebaseDatabase.getInstance().getReference().child("Pasein");
+        reff = FirebaseDatabase.getInstance().getReference();
         Pasien pasien = new Pasien();
+        ProgressBar progressBar = findViewById(R.id.progressBar4);
+
 
         btnKirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProgressBar progressBar = findViewById(R.id.progressBar4);
                 progressBar.setVisibility(View.VISIBLE);
-                String riwayatPenyakit = txtRiwayatPenyakit.getText().toString().trim();
-                if (riwayatPenyakit.isEmpty()){
-                    txtRiwayatPenyakit.setError("Riwayat penyakit tidak boleh kosong");
-                    txtRiwayatPenyakit.requestFocus();
-                    return;
-                }else{
-                    pasien.setRiwayatPenyakit(riwayatPenyakit);
-                    reff.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(pasien)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
+                String nKTP = txtKTP.getText().toString().trim();
+                String nKK = txtKK.getText().toString().trim();
+                String rPenyakit = txtPenyakit.getText().toString().trim();
+                reff.child("User").child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        User usr = snapshot.getValue(User.class);
+                        if (usr != null) {
                             progressBar.setVisibility(View.INVISIBLE);
-                            Toast.makeText(getApplicationContext(),"Pengajuan pasien berhasil",Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            progressBar.setVisibility(View.INVISIBLE);
-                            Toast.makeText(getApplicationContext(),"Pengajuan pasien gagal",Toast.LENGTH_LONG).show();
+                        if (nKTP.isEmpty()) {
+                            txtKTP.setError("Nomor KTP tidak boleh kosong");
+                            txtKTP.requestFocus();
+                            return;
+                        } else if (nKTP.length() < 16) {
+                            txtKTP.setError("Nomor KTP salah, Silahkan masukkan kembali");
+                            txtKTP.requestFocus();
+                            return;
                         }
-                    });
-                }
-            }
-        });
-    }
+                        if (nKK.isEmpty()) {
+                            txtKK.setError("Nomor KK tidak boleh kosong");
+                            txtKK.requestFocus();
+                            return;
+                        } else if (nKK.length() < 16) {
+                            txtKK.setError("Nomor KK salah, Silahkan masukkan kembali");
+                            txtKK.requestFocus();
+                            return;
+                        }
+                        if (rPenyakit.isEmpty()) {
+                            txtPenyakit.setError("Riwayat penyakit tidak boleh kosong");
+                            txtPenyakit.requestFocus();
+                            return;
+                        } else {
+                            pasien.setNama(usr.getNama());
+                            pasien.setNomorKTP(nKTP);
+                            pasien.setNomorKK(nKK);
+                            pasien.setRiwayatPenyakit(rPenyakit);
+                            reff.child("Pasien").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(pasien)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            usr.setNomorKTP(nKTP);
+                                            usr.setNomorKK(nKK);
+                                            usr.setRiwayatPenyakit(rPenyakit);
+                                            reff.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(usr);
+                                            Toast.makeText(getApplicationContext(), "Pengajuan pasien berhasil", Toast.LENGTH_LONG).show();
+                                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    progressBar.setVisibility(View.INVISIBLE);
+                                    Toast.makeText(getApplicationContext(), "Pengajuan pasien gagal", Toast.LENGTH_LONG).show();
+                                }
+                            });
 
-    private void PilihFoto(String namaFile){
+                        }
+                    }
+
+                @Override
+                public void onCancelled (@NonNull DatabaseError error){
+
+                }
+            });
+        }
+    });
+}
+
+
+    private void PilihFoto(String namaFile) {
         this.namaFile = namaFile;
         Intent intent = new Intent();
-        intent.setType("image/pasien/"+userID+"/*");
+        intent.setType("image/pasien/" + userID + "/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, 1);
     }
@@ -130,17 +178,17 @@ public class DataFormActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null){
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             img = data.getData();
-            if (namaFile.equals("KTP")){
+            if (namaFile.equals("KTP")) {
                 picKTP.setImageURI(img);
-                UploadPic(img,"KTP");
-            }else if (namaFile.equals("KK")){
+                UploadPic(img, "KTP");
+            } else if (namaFile.equals("KK")) {
                 picKK.setImageURI(img);
-                UploadPic(img,"KK");
-            }else if (namaFile.equals("Surat Sehat")){
+                UploadPic(img, "KK");
+            } else if (namaFile.equals("Surat Sehat")) {
                 picSuratSehat.setImageURI(img);
-                UploadPic(img,"Surat Sehat");
+                UploadPic(img, "Surat Sehat");
             }
         }
     }
@@ -149,7 +197,7 @@ public class DataFormActivity extends AppCompatActivity {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading Image");
         pd.show();
-        StorageReference picRef = storageReff.child("images/pasien/"+ userID + "/"+namaFile);
+        StorageReference picRef = storageReff.child("images/pasien/" + userID + "/" + namaFile);
         picRef.putFile(imgFile)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
