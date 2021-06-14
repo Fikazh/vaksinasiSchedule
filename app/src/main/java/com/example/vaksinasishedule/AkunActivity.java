@@ -1,4 +1,4 @@
-package com.example.vaksinasishedule;
+    package com.example.vaksinasishedule;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,7 +10,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.storage.StorageManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -37,15 +36,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.google.firebase.storage.StorageTask.SnapshotBase;
 
-import java.util.UUID;
-
-public class AkunActivity extends AppCompatActivity {
+    public class AkunActivity extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reff;
     private FirebaseStorage storage;
-    private StorageReference storageReference;
+    private StorageReference storageReff;
     private String userID;
     private Button ganti_sandi;
     private Uri imgUri;
@@ -62,7 +58,7 @@ public class AkunActivity extends AppCompatActivity {
         userID = user.getUid();
 
         storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
+        storageReff = storage.getReference();
         profilePic = findViewById(R.id.fotoProfile);
 
         profilePic.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +96,7 @@ public class AkunActivity extends AppCompatActivity {
                     txtNama.setText(userProfile.nama);
                     txtEmail.setText(userProfile.email);
                     txtTelpon.setText(userProfile.nomorTelpon);
-                    StorageReference picRef = storageReference.child("images/"+userID);
+                    StorageReference picRef = storageReff.child("images/"+userID);
                     picRef.getBytes(1024*1024)
                             .addOnSuccessListener(new OnSuccessListener<byte[]>() {
                                 @Override
@@ -236,7 +232,7 @@ public class AkunActivity extends AppCompatActivity {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading Image");
         pd.show();
-        StorageReference picRef = storageReference.child("images/"+userID);
+        StorageReference picRef = storageReff.child("images/profile/"+userID);
         picRef.putFile(imgUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
