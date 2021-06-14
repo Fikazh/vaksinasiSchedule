@@ -70,7 +70,8 @@ import com.google.firebase.storage.UploadTask;
 
         final TextView txtNama = findViewById(R.id.namaAkunField);
         final TextView txtEmail = findViewById(R.id.emailAkunField);
-        final TextView txtKtp = findViewById(R.id.ktpAkunField);
+        final TextView txtKTP = findViewById(R.id.ktpAkunField);
+        final TextView txtKK = findViewById(R.id.kkAkunField);
         final TextView txtTelpon = findViewById(R.id.telponAkunField);
         final TextView txtAlamat = findViewById(R.id.alamatAkunField);
 
@@ -96,7 +97,9 @@ import com.google.firebase.storage.UploadTask;
                     txtNama.setText(userProfile.nama);
                     txtEmail.setText(userProfile.email);
                     txtTelpon.setText(userProfile.nomorTelpon);
-                    txtKtp.setText(userProfile.nomorKTP);
+                    txtKTP.setText(userProfile.nomorKTP);
+                    txtKK.setText(userProfile.nomorKK);
+                    txtAlamat.setText(userProfile.alamat);
                     StorageReference picRef = storageReff.child("images/profile/"+userID);
                     picRef.getBytes(1024*1024)
                             .addOnSuccessListener(new OnSuccessListener<byte[]>() {
