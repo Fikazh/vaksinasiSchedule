@@ -96,7 +96,8 @@ import com.google.firebase.storage.UploadTask;
                     txtNama.setText(userProfile.nama);
                     txtEmail.setText(userProfile.email);
                     txtTelpon.setText(userProfile.nomorTelpon);
-                    StorageReference picRef = storageReff.child("images/"+userID);
+                    txtKtp.setText(userProfile.nomorKTP);
+                    StorageReference picRef = storageReff.child("images/profile/"+userID);
                     picRef.getBytes(1024*1024)
                             .addOnSuccessListener(new OnSuccessListener<byte[]>() {
                                 @Override
@@ -213,7 +214,7 @@ import com.google.firebase.storage.UploadTask;
 
     private void PilihFoto(){
         Intent intent = new Intent();
-        intent.setType("image/*");
+        intent.setType("images/profile/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, 1);
     }
