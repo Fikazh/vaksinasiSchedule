@@ -85,7 +85,7 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nomor_ktp_field"
+                        android:id="@+id/ktpFormField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
@@ -136,7 +136,7 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nomor_kk_field"
+                        android:id="@+id/kkFormField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
@@ -164,11 +164,11 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/alamat_field"
+                        android:id="@+id/alamatFormField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto"
-                        android:inputType="number" />
+                        android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <View

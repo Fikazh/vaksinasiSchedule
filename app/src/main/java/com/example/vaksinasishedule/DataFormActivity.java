@@ -37,7 +37,7 @@ public class DataFormActivity extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageReff;
     private String userID, namaFile;
-    private TextView txtKTP, txtKK, txtPenyakit;
+    private TextView txtKTP, txtKK, txtPenyakit, txtAlamat;
     private Uri img;
     private ImageView picKK, picKTP, picSuratSehat;
 
@@ -86,7 +86,8 @@ public class DataFormActivity extends AppCompatActivity {
 
         Button btnKirim = findViewById(R.id.kirim_button);
         txtKTP = findViewById(R.id.ktpFormField);
-        txtKK = findViewById(R.id.kkFormfield);
+        txtKK = findViewById(R.id.kkFormField);
+        txtAlamat = findViewById(R.id.alamatFormField);
         txtPenyakit = findViewById(R.id.riwayatPenyakitField);
         mAuth = FirebaseAuth.getInstance();
         reff = FirebaseDatabase.getInstance().getReference();
@@ -100,6 +101,7 @@ public class DataFormActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 String nKTP = txtKTP.getText().toString().trim();
                 String nKK = txtKK.getText().toString().trim();
+                String alamat = txtAlamat.getText().toString().trim();
                 String rPenyakit = txtPenyakit.getText().toString().trim();
                 reff.child("User").child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -134,6 +136,7 @@ public class DataFormActivity extends AppCompatActivity {
                             pasien.setNama(usr.getNama());
                             pasien.setNomorKTP(nKTP);
                             pasien.setNomorKK(nKK);
+                            pasien.setAlamat(alamat);
                             pasien.setRiwayatPenyakit(rPenyakit);
                             reff.child("Pasien").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(pasien)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -141,6 +144,7 @@ public class DataFormActivity extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
                                             usr.setNomorKTP(nKTP);
                                             usr.setNomorKK(nKK);
+                                            usr.setAlamat(alamat);
                                             usr.setRiwayatPenyakit(rPenyakit);
                                             reff.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(usr);
                                             Toast.makeText(getApplicationContext(), "Pengajuan pasien berhasil", Toast.LENGTH_LONG).show();
@@ -170,7 +174,7 @@ public class DataFormActivity extends AppCompatActivity {
     private void PilihFoto(String namaFile) {
         this.namaFile = namaFile;
         Intent intent = new Intent();
-        intent.setType("image/pasien/" + userID + "/*");
+        intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, 1);
     }
