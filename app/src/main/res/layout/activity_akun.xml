@@ -33,7 +33,7 @@
         app:layout_constraintStart_toEndOf="@+id/fotoProfile"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:id="@+id/akun_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -114,6 +114,29 @@
             app:layout_constraintTop_toBottomOf="@id/NoKTPProfile" />
 
         <TextView
+            android:id="@+id/NoKK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto"
+            android:text="Nomor KK:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ktpAkunField" />
+
+        <TextView
+            android:id="@+id/kkAkunField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kotakputih_radius10"
+            android:contentDescription="@string/hello_world"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/NoKK" />
+
+        <TextView
             android:id="@+id/NoTeleponProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,7 +147,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ktpAkunField" />
+            app:layout_constraintTop_toBottomOf="@id/kkAkunField" />
 
         <TextView
             android:id="@+id/telponAkunField"
@@ -185,7 +208,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navbar"
