@@ -53,6 +53,33 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_margin="20dp">
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nomor_ktp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan Nomor KTP"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nomor_ktp_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:fontFamily="@font/roboto"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:id="@+id/line5"
+                    android:layout_width="340dp"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nomor_ktp" />
+
                 <TextView
                     android:id="@+id/FotoKTP"
                     android:layout_width="wrap_content"
@@ -61,8 +88,9 @@
                     android:text="Foto KTP"
                     android:textSize="18sp"
                     android:textColor="#000000"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/line5"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
                 <ImageView
                     android:id="@+id/ktpUpload"
@@ -108,7 +136,7 @@
                     app:srcCompat="@drawable/upload_image" />
 
                 <View
-                    android:id="@+id/line2"
+                    android:id="@+id/line6"
                     android:layout_width="340dp"
                     android:layout_height="1dp"
                     android:background="@android:color/darker_gray"
@@ -116,6 +144,34 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/kkUpload" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nomor_kk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan Nomor Kartu Keluarga"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/line6"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nomor_kk_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:fontFamily="@font/roboto"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="340dp"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nomor_kk" />
 
                 <TextView
                     android:id="@+id/SuratSehat"
@@ -154,7 +210,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:hint="Riwayat Penyakit"
+                    android:hint="Tuliskan Riwayat Penyakit"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 
                     app:layout_constraintTop_toBottomOf="@id/line3">

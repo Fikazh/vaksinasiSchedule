@@ -46,6 +46,28 @@
         tools:layout_editor_absoluteX="-26dp">
 
         <TextView
+            android:id="@+id/kodeVaksin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/hello_world"
+            android:fontFamily="@font/roboto"
+            android:text="Kode Vaksin:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/kodeVaksinField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kotakputih_radius10"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kodeVaksin" />
+
+        <TextView
             android:id="@+id/email_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,8 +76,9 @@
             android:text="Email:"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/kodeVaksinField"/>
 
         <TextView
             android:id="@+id/emailAkunField"
