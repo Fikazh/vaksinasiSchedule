@@ -27,19 +27,19 @@ public class DetailJadwalActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.akun:
                         startActivity(new Intent(getApplicationContext(), AkunActivity.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                         return true;
                     case R.id.jadwal:
                         startActivity(new Intent(getApplicationContext(), Jadwal.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         return true;
                     case R.id.pengaturan:
                         startActivity(new Intent(getApplicationContext(), PengaturanActivity.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         return true;
                 }
                 return false;

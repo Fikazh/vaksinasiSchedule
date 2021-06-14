@@ -128,15 +128,15 @@ import com.google.firebase.storage.UploadTask;
                         return true;
                     case R.id.jadwal:
                         startActivity(new Intent(getApplicationContext(), Jadwal.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         return true;
                     case R.id.pengaturan:
                         startActivity(new Intent(getApplicationContext(), PengaturanActivity.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         return true;
                 }
                 return false;
