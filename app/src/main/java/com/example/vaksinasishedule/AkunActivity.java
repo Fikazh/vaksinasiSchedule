@@ -214,7 +214,7 @@ import com.google.firebase.storage.UploadTask;
 
     private void PilihFoto(){
         Intent intent = new Intent();
-        intent.setType("images/profile/*");
+        intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, 1);
     }
