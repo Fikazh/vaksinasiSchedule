@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -54,7 +55,7 @@ import com.google.firebase.storage.UploadTask;
         setContentView(R.layout.activity_akun);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
-        reff = FirebaseDatabase.getInstance().getReference("User");
+        reff = FirebaseDatabase.getInstance().getReference();
         userID = user.getUid();
 
         storage = FirebaseStorage.getInstance();
@@ -69,6 +70,7 @@ import com.google.firebase.storage.UploadTask;
         });
 
         final TextView txtNama = findViewById(R.id.namaAkunField);
+        final TextView txtKodeVaksin = findViewById(R.id.kodeVaksinField);
         final TextView txtEmail = findViewById(R.id.emailAkunField);
         final TextView txtKTP = findViewById(R.id.ktpAkunField);
         final TextView txtKK = findViewById(R.id.kkAkunField);
@@ -86,14 +88,23 @@ import com.google.firebase.storage.UploadTask;
             }
         });
 
-        ProgressBar progressBar = findViewById(R.id.progressBar3);
-        progressBar.setVisibility(View.VISIBLE);
+        ProgressBar progressBar1 = findViewById(R.id.progressBar3);
+        ProgressBar progressBar2 = findViewById(R.id.progressBar5);
+        progressBar1.setVisibility(View.VISIBLE);
 
-        reff.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+        reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
+                User kdPasien = snapshot.child("JadwalVaksin").child(userID).getValue(User.class);
+                if (snapshot.child("JadwalVaksin").hasChild(userID)){
+                    txtKodeVaksin.setText(kdPasien.kodePasien);
+                }else{
+                    txtKodeVaksin.setText("-");
+                }
+
+                User userProfile = snapshot.child("User").child(userID).getValue(User.class);
                 if(userProfile != null){
+                    progressBar2.setVisibility(View.VISIBLE);
                     txtNama.setText(userProfile.nama);
                     txtEmail.setText(userProfile.email);
                     txtTelpon.setText(userProfile.nomorTelpon);
@@ -107,9 +118,22 @@ import com.google.firebase.storage.UploadTask;
                                 public void onSuccess(byte[] bytes) {
                                     Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                                     profilePic.setImageBitmap(bitmap);
+                                    progressBar2.setVisibility(View.INVISIBLE);
                                 }
-                            });
-                    progressBar.setVisibility(View.INVISIBLE);
+                            }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getApplicationContext(), "Silahkan masukkan foto profile", Toast.LENGTH_LONG).show();
+                            progressBar2.setVisibility(View.INVISIBLE);
+                        }
+                    }).addOnCanceledListener(new OnCanceledListener() {
+                        @Override
+                        public void onCanceled() {
+                            Toast.makeText(getApplicationContext(), "Silahkan masukkan foto profile", Toast.LENGTH_LONG).show();
+                            progressBar2.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                    progressBar1.setVisibility(View.INVISIBLE);
                 }
             }
 

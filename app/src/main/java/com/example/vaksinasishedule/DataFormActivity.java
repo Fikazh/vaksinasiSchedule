@@ -40,6 +40,7 @@ public class DataFormActivity extends AppCompatActivity {
     private TextView txtKTP, txtKK, txtPenyakit, txtAlamat;
     private Uri img;
     private ImageView picKK, picKTP, picSuratSehat;
+    private boolean picKKcek = false, picKTPcek = false, picSuratSehatcek = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +90,8 @@ public class DataFormActivity extends AppCompatActivity {
         txtKK = findViewById(R.id.kkFormField);
         txtAlamat = findViewById(R.id.alamatFormField);
         txtPenyakit = findViewById(R.id.riwayatPenyakitField);
+        picKTP = findViewById(R.id.ktpUpload);
+
         mAuth = FirebaseAuth.getInstance();
         reff = FirebaseDatabase.getInstance().getReference();
         Pasien pasien = new Pasien();
@@ -110,6 +113,11 @@ public class DataFormActivity extends AppCompatActivity {
                         if (usr != null) {
                             progressBar.setVisibility(View.INVISIBLE);
                         }
+                        if (picKTPcek == false) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            Toast.makeText(getApplicationContext(), "Silahkan upload foto KTP", Toast.LENGTH_LONG).show();
+                            return;
+                        }
                         if (nKTP.isEmpty()) {
                             txtKTP.setError("Nomor KTP tidak boleh kosong");
                             txtKTP.requestFocus();
@@ -117,6 +125,10 @@ public class DataFormActivity extends AppCompatActivity {
                         } else if (nKTP.length() < 16) {
                             txtKTP.setError("Nomor KTP salah, Silahkan masukkan kembali");
                             txtKTP.requestFocus();
+                            return;
+                        }if (picKKcek == false) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            Toast.makeText(getApplicationContext(), "Silahkan upload foto KK", Toast.LENGTH_LONG).show();
                             return;
                         }
                         if (nKK.isEmpty()) {
@@ -126,6 +138,10 @@ public class DataFormActivity extends AppCompatActivity {
                         } else if (nKK.length() < 16) {
                             txtKK.setError("Nomor KK salah, Silahkan masukkan kembali");
                             txtKK.requestFocus();
+                            return;
+                        }if (picSuratSehatcek == false) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            Toast.makeText(getApplicationContext(), "Silahkan upload foto Surat Keterangan Sehat", Toast.LENGTH_LONG).show();
                             return;
                         }
                         if (rPenyakit.isEmpty()) {
@@ -161,14 +177,15 @@ public class DataFormActivity extends AppCompatActivity {
                         }
                     }
 
-                @Override
-                public void onCancelled (@NonNull DatabaseError error){
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
-        }
-    });
-}
+                    }
+                });
+
+            }
+        });
+    }
 
 
     private void PilihFoto(String namaFile) {
@@ -207,6 +224,13 @@ public class DataFormActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         pd.dismiss();
+                        if (namaFile == "KTP") {
+                            picKTPcek = true;
+                        } else if (namaFile == "KK") {
+                            picKKcek = true;
+                        } else if (namaFile == "Surat Sehat") {
+                            picSuratSehatcek = true;
+                        }
                         Snackbar.make(findViewById(android.R.id.content), "Image Uploaded", Snackbar.LENGTH_LONG).show();
                     }
                 })
