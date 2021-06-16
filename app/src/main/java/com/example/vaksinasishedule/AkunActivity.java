@@ -155,16 +155,16 @@ public class AkunActivity extends AppCompatActivity {
                     case R.id.akun:
                         return true;
                     case R.id.jadwal:
-                        startActivity(new Intent(getApplicationContext(), Jadwal.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        startActivity(new Intent(getApplicationContext(), RecyclerActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.pengaturan:
                         startActivity(new Intent(getApplicationContext(), PengaturanActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
