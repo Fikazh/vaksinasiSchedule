@@ -71,6 +71,7 @@ public class AkunActivity extends AppCompatActivity {
 
         final TextView txtNama = findViewById(R.id.namaAkunField);
         final TextView txtKodeVaksin = findViewById(R.id.kodeVaksinField);
+        final TextView txtKodeTempat = findViewById(R.id.kodeTempatField);
         final TextView txtEmail = findViewById(R.id.emailAkunField);
         final TextView txtKTP = findViewById(R.id.ktpAkunField);
         final TextView txtKK = findViewById(R.id.kkAkunField);
@@ -98,8 +99,10 @@ public class AkunActivity extends AppCompatActivity {
                 User kdPasien = snapshot.child("JadwalVaksin").child(userID).getValue(User.class);
                 if (snapshot.child("JadwalVaksin").hasChild(userID)) {
                     txtKodeVaksin.setText(kdPasien.kodePasien);
+                    txtKodeTempat.setText(kdPasien.kodeTempat);
                 } else {
                     txtKodeVaksin.setText("-");
+                    txtKodeTempat.setText("-");
                 }
 
                 User userProfile = snapshot.child("User").child(userID).getValue(User.class);
@@ -123,7 +126,7 @@ public class AkunActivity extends AppCompatActivity {
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            progressBar2.setVisibility(View.INVISIBLE);
+                            progressBar2.setVisibility(View.INVISIBLE)  ;
                         }
                     }).addOnCanceledListener(new OnCanceledListener() {
                         @Override

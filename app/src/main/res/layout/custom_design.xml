@@ -18,7 +18,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Kode rumah sakit"
+            android:text="T000"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginTop="25dp"
@@ -45,8 +45,8 @@
 
         <ImageView
             android:id="@+id/rsFotoField"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             tools:srcCompat="@drawable/upload_image" />
