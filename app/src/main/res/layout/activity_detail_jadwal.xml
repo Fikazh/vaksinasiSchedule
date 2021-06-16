@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#C4DFE6"
-        android:padding="20dp"
+        android:paddingHorizontal="20dp"
         app:layout_constraintTop_toBottomOf="@id/constraint_banner"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -29,10 +29,10 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/kode_jadwal"
+                    android:id="@+id/kodeTempatDetil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kode Jadwal"
+                    android:text="Kode Tempat"
                     android:textSize="36dp"
                     android:textColor="#000"
                     app:layout_constraintTop_toTopOf="parent"
@@ -47,10 +47,10 @@
                     android:layout_marginTop="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/kode_jadwal"/>
+                    app:layout_constraintTop_toBottomOf="@+id/kodeTempatDetil"/>
 
                 <ImageView
-                    android:id="@+id/foto_lokasi"
+                    android:id="@+id/fotoLokasiField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -65,11 +65,11 @@
                     android:layout_height="wrap_content"
                     android:text="Lokasi Vaksin"
                     android:layout_marginTop="15dp"
-                    app:layout_constraintTop_toBottomOf="@id/foto_lokasi"
+                    app:layout_constraintTop_toBottomOf="@id/fotoLokasiField"
                     app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
-                    android:id="@+id/nama_lokasi_field"
+                    android:id="@+id/namaLokasiField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Nama Lokasi"
@@ -85,11 +85,11 @@
                     android:layout_height="wrap_content"
                     android:text="Alamat"
                     android:layout_marginTop="15dp"
-                    app:layout_constraintTop_toBottomOf="@id/nama_lokasi_field"
+                    app:layout_constraintTop_toBottomOf="@id/namaLokasiField"
                     app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
-                    android:id="@+id/alamat_field"
+                    android:id="@+id/alamatDetilFild"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Alamat Lokasi"
@@ -105,11 +105,11 @@
                     android:layout_height="wrap_content"
                     android:text="Tanggal Vaksin"
                     android:layout_marginTop="15dp"
-                    app:layout_constraintTop_toBottomOf="@id/alamat_field"
+                    app:layout_constraintTop_toBottomOf="@id/alamatDetilFild"
                     app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
-                    android:id="@+id/tanggal_vaksin_field"
+                    android:id="@+id/tanggalVaksinField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tanggal Vaksin"
@@ -125,11 +125,11 @@
                     android:layout_height="wrap_content"
                     android:text="Rentang Jam Gelombang 1"
                     android:layout_marginTop="15dp"
-                    app:layout_constraintTop_toBottomOf="@id/tanggal_vaksin_field"
+                    app:layout_constraintTop_toBottomOf="@id/tanggalVaksinField"
                     app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
-                    android:id="@+id/gelombang_1_field"
+                    android:id="@+id/g1Field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rentang jam gelombang satu"
@@ -145,11 +145,11 @@
                     android:layout_height="wrap_content"
                     android:text="Rentang Jam Gelombang 2"
                     android:layout_marginTop="15dp"
-                    app:layout_constraintTop_toBottomOf="@id/gelombang_1_field"
+                    app:layout_constraintTop_toBottomOf="@id/g1Field"
                     app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
-                    android:id="@+id/gelombang_2_field"
+                    android:id="@+id/g2Field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rentang Jam Gelombang 2"
