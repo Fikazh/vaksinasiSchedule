@@ -2,6 +2,7 @@ package com.example.vaksinasishedule;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +11,19 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseError;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity {
+    private FirebaseUser user;
+    private DatabaseReference reff;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +41,26 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reff = FirebaseDatabase.getInstance().getReference();
+        userID = user.getUid();
+
+        ConstraintLayout cntDaftarPasien = findViewById(R.id.lengkapi_data);
+        reff.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child("Pasien").hasChild(userID)){
+                    cntDaftarPasien.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         bottomNavigationView.setSelectedItemId(R.id.home);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -37,17 +69,17 @@ public class HomeActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.akun:
                         startActivity(new Intent(getApplicationContext(), AkunActivity.class));
-                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.jadwal:
-                        startActivity(new Intent(getApplicationContext(), Jadwal.class));
-                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                        startActivity(new Intent(getApplicationContext(), RecyclerActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.home:
                         return true;
                     case R.id.pengaturan:
                         startActivity(new Intent(getApplicationContext(), PengaturanActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;

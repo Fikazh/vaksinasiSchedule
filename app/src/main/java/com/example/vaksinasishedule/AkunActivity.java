@@ -1,4 +1,4 @@
-    package com.example.vaksinasishedule;
+package com.example.vaksinasishedule;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -37,7 +38,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-    public class AkunActivity extends AppCompatActivity {
+public class AkunActivity extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reff;
     private FirebaseStorage storage;
@@ -54,7 +55,7 @@ import com.google.firebase.storage.UploadTask;
         setContentView(R.layout.activity_akun);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
-        reff = FirebaseDatabase.getInstance().getReference("User");
+        reff = FirebaseDatabase.getInstance().getReference();
         userID = user.getUid();
 
         storage = FirebaseStorage.getInstance();
@@ -69,6 +70,7 @@ import com.google.firebase.storage.UploadTask;
         });
 
         final TextView txtNama = findViewById(R.id.namaAkunField);
+        final TextView txtKodeVaksin = findViewById(R.id.kodeVaksinField);
         final TextView txtEmail = findViewById(R.id.emailAkunField);
         final TextView txtKTP = findViewById(R.id.ktpAkunField);
         final TextView txtKK = findViewById(R.id.kkAkunField);
@@ -76,8 +78,8 @@ import com.google.firebase.storage.UploadTask;
         final TextView txtAlamat = findViewById(R.id.alamatAkunField);
 
         ganti_sandi = findViewById(R.id.GantiSandi);
-        ganti_sandi.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        ganti_sandi.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 BottomSheetDialog ganti_sandi_panel = new BottomSheetDialog(AkunActivity.this);
                 ganti_sandi_panel.setContentView(R.layout.akun_ganti_password);
                 ganti_sandi_panel.show();
@@ -86,36 +88,56 @@ import com.google.firebase.storage.UploadTask;
             }
         });
 
-        ProgressBar progressBar = findViewById(R.id.progressBar3);
-        progressBar.setVisibility(View.VISIBLE);
+        ProgressBar progressBar1 = findViewById(R.id.progressBar3);
+        ProgressBar progressBar2 = findViewById(R.id.progressBar5);
+        progressBar1.setVisibility(View.VISIBLE);
 
-        reff.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+        reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
-                if(userProfile != null){
+                User kdPasien = snapshot.child("JadwalVaksin").child(userID).getValue(User.class);
+                if (snapshot.child("JadwalVaksin").hasChild(userID)) {
+                    txtKodeVaksin.setText(kdPasien.kodePasien);
+                } else {
+                    txtKodeVaksin.setText("-");
+                }
+
+                User userProfile = snapshot.child("User").child(userID).getValue(User.class);
+                if (userProfile != null) {
+                    progressBar2.setVisibility(View.VISIBLE);
                     txtNama.setText(userProfile.nama);
                     txtEmail.setText(userProfile.email);
                     txtTelpon.setText(userProfile.nomorTelpon);
                     txtKTP.setText(userProfile.nomorKTP);
                     txtKK.setText(userProfile.nomorKK);
                     txtAlamat.setText(userProfile.alamat);
-                    StorageReference picRef = storageReff.child("images/profile/"+userID);
-                    picRef.getBytes(1024*1024)
+                    StorageReference picRef = storageReff.child("images/profile/" + userID);
+                    picRef.getBytes(1024 * 1024)
                             .addOnSuccessListener(new OnSuccessListener<byte[]>() {
                                 @Override
                                 public void onSuccess(byte[] bytes) {
                                     Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                                     profilePic.setImageBitmap(bitmap);
+                                    progressBar2.setVisibility(View.INVISIBLE);
                                 }
-                            });
-                    progressBar.setVisibility(View.INVISIBLE);
+                            }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressBar2.setVisibility(View.INVISIBLE);
+                        }
+                    }).addOnCanceledListener(new OnCanceledListener() {
+                        @Override
+                        public void onCanceled() {
+                            progressBar2.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                    progressBar1.setVisibility(View.INVISIBLE);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(), "Terjadi kesalahan",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Terjadi kesalahan", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -147,7 +169,7 @@ import com.google.firebase.storage.UploadTask;
         });
     }
 
-    private void TempatGantiPassword(BottomSheetDialog bsd){
+    private void TempatGantiPassword(BottomSheetDialog bsd) {
         TextView txtPasswordLama = bsd.findViewById(R.id.passwordLamaField);
         TextView txtPasswordBaru = bsd.findViewById(R.id.passwordBaruField);
         TextView txtPasswordUlangBaru = bsd.findViewById(R.id.passwordUlangBaruField);
@@ -156,34 +178,31 @@ import com.google.firebase.storage.UploadTask;
         btnconfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(user!=null){
-                    if(txtPasswordLama.getText().toString().trim().isEmpty()){
+                if (user != null) {
+                    if (txtPasswordLama.getText().toString().trim().isEmpty()) {
                         txtPasswordLama.setError("Password tidak boleh kosong");
                         txtPasswordLama.requestFocus();
                         return;
                     }
-                    if(txtPasswordBaru.getText().toString().trim().isEmpty()){
+                    if (txtPasswordBaru.getText().toString().trim().isEmpty()) {
                         txtPasswordBaru.setError("Password tidak boleh kosong");
                         txtPasswordBaru.requestFocus();
                         return;
-                    }
-                    else if(txtPasswordBaru.getText().toString().trim().length() < 6){
+                    } else if (txtPasswordBaru.getText().toString().trim().length() < 6) {
                         txtPasswordBaru.setError("Password tidak boleh kurang dari 6 karakter");
                         txtPasswordBaru.requestFocus();
                         return;
                     }
-                    if(txtPasswordUlangBaru.getText().toString().trim().isEmpty()){
+                    if (txtPasswordUlangBaru.getText().toString().trim().isEmpty()) {
                         txtPasswordUlangBaru.setError("Password tidak boleh kosong");
                         txtPasswordUlangBaru.requestFocus();
                         return;
-                    }
-                    else if(!txtPasswordUlangBaru.getText().toString().trim().matches(txtPasswordBaru.getText().toString().trim())){
+                    } else if (!txtPasswordUlangBaru.getText().toString().trim().matches(txtPasswordBaru.getText().toString().trim())) {
                         txtPasswordUlangBaru.setError("Password tidak sama");
                         txtPasswordUlangBaru.requestFocus();
                         return;
-                    }
-                    else{
-                        GantiPassword(txtPasswordLama.getText().toString().trim(),txtPasswordBaru.getText().toString().trim());
+                    } else {
+                        GantiPassword(txtPasswordLama.getText().toString().trim(), txtPasswordBaru.getText().toString().trim());
                         bsd.hide();
 
                     }
@@ -192,7 +211,7 @@ import com.google.firebase.storage.UploadTask;
         });
     }
 
-    private void GantiPassword(String passwordLama, String passwordBaru){
+    private void GantiPassword(String passwordLama, String passwordBaru) {
         ProgressBar progressBar = findViewById(R.id.progressBar3);
         progressBar.setVisibility(View.VISIBLE);
         AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(), passwordLama);
@@ -202,7 +221,7 @@ import com.google.firebase.storage.UploadTask;
                 user.updatePassword(passwordBaru).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(getApplicationContext(), "Password berhasil diganti",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Password berhasil diganti", Toast.LENGTH_LONG).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -215,7 +234,7 @@ import com.google.firebase.storage.UploadTask;
         });
     }
 
-    private void PilihFoto(){
+    private void PilihFoto() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -225,7 +244,7 @@ import com.google.firebase.storage.UploadTask;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null){
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imgUri = data.getData();
             profilePic.setImageURI(imgUri);
             UploadPic();
@@ -236,7 +255,7 @@ import com.google.firebase.storage.UploadTask;
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading Image");
         pd.show();
-        StorageReference picRef = storageReff.child("images/profile/"+userID);
+        StorageReference picRef = storageReff.child("images/profile/" + userID);
         picRef.putFile(imgUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override

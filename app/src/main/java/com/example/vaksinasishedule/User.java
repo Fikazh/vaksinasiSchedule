@@ -1,7 +1,7 @@
 package com.example.vaksinasishedule;
 
 public class User {
-    public String nama, email, nomorTelpon, nomorKTP, nomorKK, alamat, riwayatPenyakit;
+    public String nama, email, nomorTelpon, nomorKTP, nomorKK, alamat, riwayatPenyakit, kodePasien, kodeTempat;
 
     public User() {
     }
@@ -16,6 +16,22 @@ public class User {
 
     public void setNomorKTP(String nomorKTP) {
         this.nomorKTP = nomorKTP;
+    }
+
+    public String getKodePasien() {
+        return kodePasien;
+    }
+
+    public void setKodePasien(String kodePasien) {
+        this.kodePasien = kodePasien;
+    }
+
+    public String getKodeTempat() {
+        return kodeTempat;
+    }
+
+    public void setKodeTempat(String kodeTempat) {
+        this.kodeTempat = kodeTempat;
     }
 
     public String getNomorKK() {

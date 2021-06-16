@@ -27,9 +27,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="20dp"
+                    android:src="@drawable/ic_arrow_back"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:src="@drawable/ic_arrow_back"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/text_banner"
@@ -48,56 +48,57 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/banner"
+                android:layout_margin="20dp"
+                android:layout_marginHorizontal="20dp"
                 android:background="@drawable/layout_rounded_bg_white"
                 android:padding="15dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_margin="20dp">
+                app:layout_constraintTop_toBottomOf="@id/banner">
+
                 <TextView
                     android:id="@+id/FotoKTP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="Foto KTP"
-                    android:textSize="18sp"
                     android:textColor="#000000"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/ktpUpload"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/upload_image"
+                    android:layout_width="300dp"
+                    android:layout_height="170dp"
                     android:layout_marginTop="5dp"
-                    app:layout_constraintTop_toBottomOf="@id/FotoKTP"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/FotoKTP"
+                    app:srcCompat="@drawable/upload_image" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/nomor_ktp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nomor KTP"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toBottomOf="@id/ktpUpload"
-                    app:layout_constraintStart_toStartOf="parent">
+                    android:hint="Nomor KTP"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ktpUpload">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/ktpFormField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:fontFamily="@font/roboto"/>
+                        android:fontFamily="@font/roboto"
+                        android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <View
                     android:id="@+id/line"
                     android:layout_width="340dp"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
                     android:layout_marginTop="15dp"
+                    android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nomor_ktp" />
@@ -106,18 +107,18 @@
                     android:id="@+id/FotoKK"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto"
                     android:text="Foto Kartu Keluarga"
-                    android:textSize="18sp"
                     android:textColor="#000000"
-                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/line" />
 
                 <ImageView
                     android:id="@+id/kkUpload"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="300dp"
+                    android:layout_height="170dp"
                     android:layout_marginTop="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.507"
@@ -127,41 +128,41 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/nomor_kk"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nomor Kartu Keluarga"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toBottomOf="@id/kkUpload"
-                    app:layout_constraintStart_toStartOf="parent">
+                    android:hint="Nomor Kartu Keluarga"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/kkUpload">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/kkFormField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:fontFamily="@font/roboto"/>
+                        android:fontFamily="@font/roboto"
+                        android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <View
                     android:id="@+id/line2"
                     android:layout_width="340dp"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
                     android:layout_marginTop="15dp"
+                    android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nomor_kk" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/alamat"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Alamat Tempat Tinggal"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toBottomOf="@id/line2"
-                    app:layout_constraintStart_toStartOf="parent">
+                    android:hint="Alamat Tempat Tinggal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line2">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/alamatFormField"
@@ -175,8 +176,8 @@
                     android:id="@+id/line5"
                     android:layout_width="340dp"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
                     android:layout_marginTop="15dp"
+                    android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/alamat" />
@@ -185,58 +186,57 @@
                     android:id="@+id/SuratSehat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto"
                     android:text="Surat Keterangan Sehat"
-                    android:textSize="18sp"
                     android:textColor="#000000"
-                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/line5" />
 
                 <ImageView
                     android:id="@+id/suratSehatUpload"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/upload_image"
+                    android:layout_width="300dp"
+                    android:layout_height="170dp"
                     android:layout_marginTop="5dp"
-                    app:layout_constraintTop_toBottomOf="@id/SuratSehat"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/SuratSehat"
+                    app:srcCompat="@drawable/upload_image" />
 
                 <View
                     android:id="@+id/line3"
                     android:layout_width="340dp"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
                     android:layout_marginTop="15dp"
+                    android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/suratSehatUpload" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/RiwayatPenyakit"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:hint="Riwayat Penyakit"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
                     app:layout_constraintTop_toBottomOf="@id/line3">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/riwayatPenyakitField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textMultiLine"
-                        android:fontFamily="@font/roboto"/>
+                        android:fontFamily="@font/roboto"
+                        android:inputType="textMultiLine" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <View
                     android:id="@+id/line4"
                     android:layout_width="340dp"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
                     android:layout_marginTop="15dp"
+                    android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/RiwayatPenyakit" />
@@ -245,20 +245,21 @@
                     android:id="@+id/kirim_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
                     android:background="@drawable/button_lengkapi_data"
                     android:paddingHorizontal="50dp"
                     android:text="Kirim"
                     android:textColor="#000"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintTop_toBottomOf="@id/line4"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/line4" />
 
                 <ProgressBar
                     android:id="@+id/progressBar4"
                     style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:foregroundGravity="center"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
