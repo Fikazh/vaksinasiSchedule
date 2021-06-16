@@ -22,7 +22,7 @@
             android:layout_marginTop="20dp"
             android:contentDescription="@string/hello_world"
             android:padding="1dp"
-            android:src="@drawable/ellipse1_round"
+            android:src="@mipmap/profile"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

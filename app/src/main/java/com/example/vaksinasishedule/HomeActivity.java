@@ -72,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.jadwal:
-                        startActivity(new Intent(getApplicationContext(), Jadwal.class));
+                        startActivity(new Intent(getApplicationContext(), RecyclerActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.home:
