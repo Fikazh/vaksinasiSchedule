@@ -70,15 +70,15 @@ public class PengaturanActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.akun:
                         startActivity(new Intent(getApplicationContext(), AkunActivity.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                         return true;
                     case R.id.jadwal:
                         startActivity(new Intent(getApplicationContext(), Jadwal.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        overridePendingTransition(0, 0);
+                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                         return true;
                     case R.id.pengaturan:
                         return true;
